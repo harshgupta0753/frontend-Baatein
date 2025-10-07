@@ -48,7 +48,7 @@ export const getContacts =(payload:any, off:boolean=false)=>{
 export const newConversation =(payload:any, off:boolean=false)=>{
     const socket= getSocket();
     if(!socket) {
-        console.error("socketEvents newConversation");
+        //console.error("socketEvents newConversation");
         return;
     }
     if(off){
@@ -78,7 +78,7 @@ export const getConversations =(payload:any, off:boolean=false)=>{
 export const newMessage =(payload:any, off:boolean=false)=>{
     const socket= getSocket();
     if(!socket) {
-        //console.error("socketEvents newMessage");
+        console.error("socketEvents newMessage");
         return;
     }
     if(off){

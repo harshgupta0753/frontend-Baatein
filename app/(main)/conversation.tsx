@@ -1,4 +1,5 @@
-import { Alert, FlatList, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View,TouchableWithoutFeedback,
+  Keyboard, } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ScreenWrapper from '@/components/ScreenWrapper'
 import Typo from '@/components/Typo'
@@ -18,6 +19,7 @@ import Loading from '@/components/Loading'
 import { uploadFileToCloudinary } from '@/services/imageService'
 import { getMessages, newMessage } from '@/socket/socketEvents'
 import { MessageProps, ResponseProps } from '@/types'
+import { LinearGradient } from "expo-linear-gradient"; 
 
 const Conversation = () => {
   const { user: currentUser } = useAuth();
@@ -251,8 +253,12 @@ const Conversation = () => {
   // console.log("got conversation data: ", data);
   return (
     <ScreenWrapper showPattern={true} bgOpacity={0.5}>
+      <View style={styles.container}>
+      
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}
         style={styles.container}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.inner}>
         <Header
           style={styles.header}
           leftIcon={
@@ -274,7 +280,12 @@ const Conversation = () => {
             </TouchableOpacity>
           }
         />
-
+          <LinearGradient
+       colors={["rgba(0,0,0,0.8)", "rgba(0,0,0,0.4)", "transparent"]}
+      start={{ x: 0.5, y: 1 }}  // bottom center
+      end={{ x: 0.5, y: 0 }}    // top center
+      style={styles.gradient}
+    >
         <View style={styles.content}>
           <FlatList
             data={messages}
@@ -301,7 +312,7 @@ const Conversation = () => {
                 <TouchableOpacity
                   style={styles.inputIcon} onPress={onPickFile}>
                   <Icons.PlusIcon
-                    color={colors.black}
+                    color={colors.white}
                     weight='bold'
                     size={verticalScale(22)} />
 
@@ -321,10 +332,10 @@ const Conversation = () => {
               <TouchableOpacity style={styles.inputIcon} onPress={onSend}>
                 {
                   loading ? (
-                    <Loading size="small" color={colors.black} />
+                    <Loading size="small" color={colors.white} />
                   ) : (
                     <Icons.PaperPlaneTiltIcon
-                      color={colors.black}
+                      color={colors.white}
                       weight="fill"
                       size={verticalScale(22)} />
                   )
@@ -334,8 +345,13 @@ const Conversation = () => {
             </View>
           </View>
         </View>
+        </LinearGradient>
+        </View>
+      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
+      </View>
     </ScreenWrapper>
+    
   )
 }
 
@@ -357,11 +373,10 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: colors.white,
-    borderTopLeftRadius: radius._50,
-    borderTopRightRadius: radius._50,
-    borderCurve: "continuous",
-    overflow: "hidden",
+    // borderTopLeftRadius: radius._50,
+    // borderTopRightRadius: radius._50,
+    // borderCurve: "continuous",
+    // overflow: "hidden",
     paddingHorizontal: spacingX._15,
   },
   messageContent: {
@@ -371,7 +386,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingTop: spacingY._7,
-    paddingBottom: verticalScale(22),
+    paddingBottom: verticalScale(40),
   },
   inputIcon: {
     backgroundColor: colors.primary,
@@ -392,5 +407,9 @@ const styles = StyleSheet.create({
     paddingLeft: spacingX._12,
     borderLeftWidth: 1.5,
     borderLeftColor: colors.neutral300,
-  }
+  },
+  gradient: {
+    flex: 1,
+  },
+  inner: { flex: 1, justifyContent: "flex-end" },
 })

@@ -197,8 +197,8 @@ const ProfileModal = () => {
 
 
 
-                <Button style={{ flex: 1 }} onPress={onSubmit} loading={loading}>
-                    <Typo color={colors.black} fontWeight={"700"}>
+                <Button style={{ flex: 1 ,backgroundColor:colors.neutral00}} onPress={onSubmit} loading={loading}>
+                    <Typo color={colors.white} fontWeight={"700"}>
                         Update
                     </Typo>
                 </Button>

@@ -91,12 +91,12 @@ export const AuthProvider=({children}: {children: ReactNode})=>{
         await connectSocket();
         router.replace('/(main)/home');
     };
-
+    //bad idea for signout 
     const signOut= async()=>{
         setToken(null);
         setUser(null);
         await AsyncStorage.removeItem('token');
-        await disconnectSocket();
+         disconnectSocket();
         router.replace('/(auth)/welcome');
     }
 

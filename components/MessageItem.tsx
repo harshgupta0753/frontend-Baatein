@@ -33,7 +33,7 @@ const MessageItem = ({ item, isDirect }: { item: MessageProps, isDirect: boolean
             ]}>
                 {
                     !isMe && !isDirect &&
-                    (<Typo color={colors.neutral900} fontWeight={"600"} size={13}>
+                    (<Typo color={colors.primary} fontWeight={"900"} size={15}>
                         {item.sender.name}
                     </Typo>
                     )}
@@ -51,13 +51,13 @@ const MessageItem = ({ item, isDirect }: { item: MessageProps, isDirect: boolean
                     }
 
                     {
-                        item.content && <Typo size={15}> {item.content}</Typo>
+                        item.content && <Typo size={15} fontWeight={"400"} color={colors.white}> {item.content}</Typo>
                     }
                     <Typo
                     style={{alignSelf:"flex-end"}}
                     size={11}
                     fontWeight={"500"}
-                    color={colors.neutral600}>
+                    color={colors.white}>
                         {formattedDate}
                     </Typo>
             </View>

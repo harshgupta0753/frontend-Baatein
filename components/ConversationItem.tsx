@@ -76,7 +76,7 @@ const ConversationItem = ({item,showDivider,router}:ConversationListItemProps) =
                 </Typo>
                 {
                     item.lastMessage && 
-                        <Typo size={15}>
+                        <Typo size={11}>
                             {getLastMessageDate()}
                         </Typo>
                     

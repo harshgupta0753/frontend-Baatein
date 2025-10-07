@@ -276,9 +276,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: spacingY._20,
         borderRadius: radius.full,
         backgroundColor: colors.neutral100,
+        borderWidth:1,
+        borderColor:colors.neutral200
     },
     activeTabStyle: {
         backgroundColor: colors.primaryLight,
+        
     },
     conversationList: {
         marginVertical: spacingX._20,

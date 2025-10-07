@@ -18,6 +18,7 @@ const Welcome = () => {
                 <View style={{ alignItems: "center" }}>
                     <Typo color={colors.white} size={43} fontWeight={'900'}>Baatein
                     </Typo>
+                    
                 </View>
                 <Animated.Image
                     entering={FadeIn.duration(800).springify()}
@@ -27,13 +28,13 @@ const Welcome = () => {
                 />
                 <View>
                     <Typo color={colors.white} size={33} fontWeight={'800'} style={{ textAlign: "center" }}>
-                        Stay Connected
+                        ❣️ Stay connected 
                     </Typo>
                     <Typo color={colors.white} size={33} fontWeight={'800'} style={{ textAlign: "center" }}>
-                       with your friends
+                     with your friends
                     </Typo>
                     <Typo color={colors.white} size={33} fontWeight={'800'} style={{ textAlign: "center" }}>
-                        and family
+                         {"         "} and family ❣️
                     </Typo>
                 </View>
                 <Button style={{backgroundColor:colors.white}} onPress={()=>router.push('/(auth)/register')} >
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "space-around",
         paddingHorizontal: spacingX._20,
-        marginVertical: spacingY._10,
+        marginVertical: spacingY._50,
 
     },
     background: {
@@ -60,7 +61,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.neutral900,
     },
     welcomeImage: {
-        height: verticalScale(300),
+        
+        height: verticalScale(350),
         aspectRatio: 1,
         alignSelf: "center",
     }
